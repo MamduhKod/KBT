@@ -1,0 +1,8 @@
+{% for experiment in experiments %}
+    <div class="experiment-item">
+        <h2>{{ experiment.namn }}</h2>
+        <p>{{ experiment.beskrivning }}</p>
+        <p>{{ experiment.datum }}</p>
+        <a href="{% url 'detail' experiment.id %}">Läs mer</a>
+    </div>
+{% endfor %}

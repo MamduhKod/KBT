@@ -4,8 +4,10 @@ from .models import Experiment
 from django.http import HttpResponse
 
 # Create your views here.
-def IndexView(request):
-    return HttpResponse('Hi')
+def Index(request):
+    experiment= Experiment.objects.all()
+    context = {'experiments': experiment}
+    return render(request,'experiments/index.html', context)
     
     
     

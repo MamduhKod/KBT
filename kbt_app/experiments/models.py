@@ -1,6 +1,13 @@
 from django.db import models
 
 # Create your models here.
+
+from django.apps import AppConfig
+
+class ExperimentsConfig(AppConfig):
+    name = 'experiments' 
+    
+    
 class Experiment(models.Model):
     namn = models.CharField( max_length=50)
     beskrivning = models.CharField( max_length=300)
