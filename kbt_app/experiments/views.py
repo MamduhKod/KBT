@@ -1,23 +1,26 @@
-from django.shortcuts import render
+from .models import ExperimentPlan, ExperimentResultat
 from django.views.generic import CreateView
-from .models import Experiment, ExperimentPlan
-from django.http import HttpResponse
 from django.urls import reverse_lazy
+from django.shortcuts import render
 
 # Create your views here.
+
+
+def Index(request):
+    experiments = ExperimentPlan.objects.all()  # Plural for consistency
+    context = {'experiments': experiments}  # Use 'experiments' key
+    return render(request, 'experiments/index.html', context)
+
 class ExperimentTankeView(CreateView):
     model = ExperimentPlan
     fields = ["negativ_tanke","Hypotes", "tro_pre"]
-    success_url = reverse_lazy(('Experiment'))
+    success_url = reverse_lazy(('skapa'))
     
-    def render_to_response(self, context, **kwargs):
-        context['form'] = self.get_form()
-        return super().render_to_response(context, **kwargs)
+    def get(self, request, *args, **kwargs):
+     context = {} 
+     context['form'] = self.get_form()
+     return render(request, 'experiments/tanke_form.html', context)
     
-
-#def Index(request):
- #   experiment= ExperimentPlan.objects.all()
-  ## return render(request,'experiments/index.html', context)
 
 
 

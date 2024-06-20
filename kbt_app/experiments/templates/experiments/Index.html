@@ -24,18 +24,14 @@
 </head>
 <body>
 
-  <h1>Mina beteendeexperiment</h1>
-  {% for experiment in experiments %}
-    <div class="experiment-item">
-        <h2>{{ experiment.namn }}</h2>
-        <p>{{ experiment.beskrivning }}</p>
-        <p>{{ experiment.datum }}</p>
-        <a href="{% url 'Detail' experiment.id %}">Läs mer</a>
-    </div>
-  {% endfor %}
-  {% else %}
-    <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>
-  {% endif %}
+  {% for experiment in ExperimentPlan %}
+  <div class="experiment-item">
+    <p>{{ experiment.Hypotes }}</p>
+    <p>{{ experiment.datum }}</p>
+  </div>
+{% empty %}
+  <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>
+{% endfor %}
 
   <h2>Skapa nytt beteendeexperiment</h2>
   <a href="{% url 'Skapa' %}">

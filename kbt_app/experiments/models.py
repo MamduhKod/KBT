@@ -11,10 +11,10 @@ class ExperimentsConfig(AppConfig):
 class ExperimentPlan(models.Model):
     namn = models.CharField(max_length=50,)
     Hypotes = models.CharField(max_length=100, 
-     help_text="Vad tror du kommer hända?")
+     help_text="Vad tror du kommer hända?",default="")
     negativ_tanke = models.CharField( max_length=50,
         help_text="Vilken tanke vill du testa?")
-    beskrivning = models.CharField(help_text="Beskriv syftet med ditt experiment.", max_length=300)
+    beskrivning = models.CharField(help_text="Beskriv syftet med ditt experiment.", max_length=300, default="")
     datum = models.DateField(auto_now=False, auto_now_add=False, 
     help_text="När vill du utföra ditt experiment?")
     Beteende = models.CharField( max_length=100)
