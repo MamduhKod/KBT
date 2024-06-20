@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils import timezone 
+from datetime import date
 # Create your models here.
 
 from django.apps import AppConfig
@@ -15,12 +16,11 @@ class ExperimentPlan(models.Model):
     negativ_tanke = models.CharField( max_length=50,
         help_text="Vilken tanke vill du testa?")
     beskrivning = models.CharField(help_text="Beskriv syftet med ditt experiment.", max_length=300, default="")
-    datum = models.DateField(auto_now=False, auto_now_add=False, 
-    help_text="När vill du utföra ditt experiment?")
+    datum = models.DateField(default=date.today)
     Beteende = models.CharField( max_length=100)
-    Situation = models.DateField( max_length=100)
-    Konsekvens = models.DateField(max_length=100)
-    tro_pre = models.SmallIntegerField(help_text="Hur starkt tror du på din förutsägelse?")
+    Situation = models.CharField( max_length=100)
+    Konsekvens = models.CharField(max_length=100)
+    tro_pre = models.IntegerField(help_text="Hur starkt tror du på din förutsägelse?")
 
 class ExperimentResultat(models.Model):
     Experiment = models.ForeignKey(ExperimentPlan, on_delete=models.CASCADE)

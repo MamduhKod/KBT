@@ -7,21 +7,19 @@ from django.shortcuts import render
 
 
 def Index(request):
-    experiments = ExperimentPlan.objects.all()  # Plural for consistency
-    context = {'experiments': experiments}  # Use 'experiments' key
+    experiments = ExperimentPlan.objects.all()  
+    context = {'experiments': experiments}  
     return render(request, 'experiments/index.html', context)
 
-class ExperimentTankeView(CreateView):
+class ExperimentPlanView(CreateView):
     model = ExperimentPlan
-    fields = ["negativ_tanke","Hypotes", "tro_pre"]
+    fields = ["negativ_tanke","namn", "beskrivning","Beteende","Situation","Konsekvens","datum","tro_pre"]
     success_url = reverse_lazy(('skapa'))
     
     def get(self, request, *args, **kwargs):
      context = {} 
      context['form'] = self.get_form()
      return render(request, 'experiments/tanke_form.html', context)
-    
-
 
 
     

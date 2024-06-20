@@ -1,7 +1,8 @@
-<h1>beteendeexperiment</h1>
-<h2>Vilken tanke vill du testa_</h2>
+<h1>Beteendeexperiment</h1>
+<h2>Vilken tanke vill du testa?</h2>
+<h3>Fyll i en negativ automatisk tanke som du vill testa.</h3>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Skapa</button>
+  <button type="submit">Se ditt experiment</button>
 </form>
