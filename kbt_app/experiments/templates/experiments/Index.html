@@ -1,8 +1,46 @@
-{% for experiment in experiments %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Experiments</title>
+<style>
+  .cool-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .cool-button:hover {
+    background-color: #45A049; /* Green on hover */
+  }
+</style>
+</head>
+<body>
+
+  <h1>Mina beteendeexperiment</h1>
+  {% for experiment in experiments %}
     <div class="experiment-item">
         <h2>{{ experiment.namn }}</h2>
         <p>{{ experiment.beskrivning }}</p>
         <p>{{ experiment.datum }}</p>
-        <a href="{% url 'detail' experiment.id %}">Läs mer</a>
+        <a href="{% url 'Detail' experiment.id %}">Läs mer</a>
     </div>
-{% endfor %}
+  {% endfor %}
+  {% else %}
+    <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>
+  {% endif %}
+
+  <h2>Skapa nytt beteendeexperiment</h2>
+  <a href="{% url 'Skapa' %}">
+    <button class="cool-button">Skapa nytt experiment</button>
+  </a>
+
+</body>
+</html>

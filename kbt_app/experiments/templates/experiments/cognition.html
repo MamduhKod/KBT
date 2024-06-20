@@ -1,0 +1,9 @@
+<h1>Vilken tanke vill du testa?</h1>
+<h3>En negativ automatisk tanke är en obehaglig tanke som får oss att undvika det vi egentligen vill
+    göra. Vilken negativ automatisk tanke vill du testa?</h3>
+    <p>Exempel: Jag kan inte ha roligt i grupp.</p>
+<form method="post">
+  {% csrf_token %}
+  {{ tanke_form.as_p }}
+  <button type="submit">Nästa</button>
+</form>
