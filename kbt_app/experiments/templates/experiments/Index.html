@@ -20,14 +20,34 @@
   .cool-button:hover {
     background-color: #45A049; /* Green on hover */
   }
+  .experiment-details {
+    display: none;
+    /* Additional styles for details section */
+  }
+  
+  .experiment-item:hover .experiment-details {
+    display: block;
+    /* Additional styles for details section on hover */
+  }
 </style>
 </head>
 <body>
 
-  {% for experiment in ExperimentPlan %}
+
+
+  {% for experiment in experiments %}
   <div class="experiment-item">
     <p>{{ experiment.Hypotes }}</p>
     <p>{{ experiment.datum }}</p>
+    <p>{{ experiment.namn }}</p>
+    <button class="info-button">Info</button>
+    <div class="experiment-details" style="display: none;">
+      <p><b>Negativ Tanke:</b> {{ experiment.negativ_tanke }}</p>  <p><b>Beskrivning:</b> {{ experiment.beskrivning }}</p>
+      <p><b>Beteende:</b> {{ experiment.Beteende }}</p>
+      <p><b>Situation:</b> {{ experiment.Situation }}</p>
+      <p><b>Konsekvens:</b> {{ experiment.Konsekvens }}</p>
+      <p><b>Trolig Prediktion:</b> {{ experiment.tro_pre }}</p>
+    </div>
   </div>
 {% empty %}
   <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>
@@ -40,3 +60,27 @@
 
 </body>
 </html>
+
+<script>
+  const infoButtons = document.querySelectorAll('.info-button');
+
+  infoButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Get the experiment object associated with this button
+      const experimentId = this.parentNode.dataset.experimentId;  // Assuming you add data-experimentId to the parent div
+      const experiment = /* Get the experiment object based on experimentId */;
+
+      // Get the details section
+      const details = this.nextElementSibling;  // Assuming details section is the next sibling
+
+      // Populate details section with experiment data
+      details.querySelector('p:nth-child(1) b').textContent = experiment.negativ_tanke; // Update first paragraph (adjust selector based on your structure)
+      details.querySelector('p:nth-child(2) b').textContent = experiment.beskrivning;
+      // Repeat for other fields
+
+      // Toggle visibility of details
+      details.style.display = details.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+</script>
+

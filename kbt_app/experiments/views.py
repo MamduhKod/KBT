@@ -14,7 +14,7 @@ def Index(request):
 class ExperimentPlanView(CreateView):
     model = ExperimentPlan
     fields = ["negativ_tanke","namn", "beskrivning","Beteende","Situation","Konsekvens","datum","tro_pre"]
-    success_url = reverse_lazy(('skapa'))
+    success_url = reverse_lazy(('Index'))
     
     def get(self, request, *args, **kwargs):
      context = {} 
