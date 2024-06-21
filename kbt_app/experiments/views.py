@@ -14,7 +14,7 @@ def Index(request):
 class ExperimentPlanView(CreateView):
     model = ExperimentPlan
     fields = ["negativ_tanke","tro_pre","datum","Beteende","Situation","Konsekvens"]
-    success_url = reverse_lazy(('Klart_experiment'))
+    
     
     def get(self, request, *args, **kwargs):
      context = {} 
@@ -25,7 +25,7 @@ class ExperimentPlanView(CreateView):
 class ExperimentResultatView(CreateView):
     model = ExperimentResultat
     fields = ["resultat","insikter","tro_post"]
-    success_url = reverse_lazy(('Index'))
+    success_url = reverse_lazy(('Resultat'))
     
     def get(self, request, *args, **kwargs):
      context = {} 
@@ -33,7 +33,7 @@ class ExperimentResultatView(CreateView):
      return render(request, 'experiments/record_result.html', context)
     
     
-def Resultat(request,resultat_id ):
-    resultat = ExperimentResultat.objects.get(pk=resultat_id)  
+def Resultat(request,experiment_id ):
+    resultat = ExperimentResultat.objects.get(pk=experiment_id)  
     context = {'resultat': resultat}  
     return render(request, 'experiments/result.html', context)
