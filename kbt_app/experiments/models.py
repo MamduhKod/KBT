@@ -10,18 +10,16 @@ class ExperimentsConfig(AppConfig):
     
     
 class ExperimentPlan(models.Model):
-    namn = models.CharField(max_length=50,)
-    Hypotes = models.CharField(max_length=100, 
-     help_text="Vad tror du kommer hända?",default="")
     negativ_tanke = models.CharField( max_length=50,
         help_text="Vilken tanke vill du testa?")
-    beskrivning = models.CharField(help_text="Beskriv syftet med ditt experiment.", max_length=300, default="")
-    datum = models.DateField(default=date.today)
-    Beteende = models.CharField( max_length=100)
-    Situation = models.CharField( max_length=100)
-    Konsekvens = models.CharField(max_length=100)
     tro_pre = models.IntegerField(help_text="Hur starkt tror du på din förutsägelse?")
-
+    datum = models.DateField(default=date.today)
+    Beteende = models.CharField( max_length=100,
+        help_text="Hur kan du testa din tanke?")
+    Situation = models.CharField( max_length=100,
+        help_text="Var kan du testa din tanke?")
+    Konsekvens = models.CharField(max_length=100,
+        help_text="Vad tror du kommer hända?")
 class ExperimentResultat(models.Model):
     Experiment = models.ForeignKey(ExperimentPlan, on_delete=models.CASCADE)
     resultat = models.CharField(max_length=300,help_text="Vad hände?")

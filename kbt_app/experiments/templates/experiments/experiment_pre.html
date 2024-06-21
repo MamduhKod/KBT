@@ -1,0 +1,8 @@
+<h1>Beteendeexperiment</h1>
+<h2>Hur kan du testa om din tanke stämmer?</h2>
+<h3>Beskriv hur du kan testa ett beteende för att se om din tanke stämmer.</h3>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Definiera experiment</button>
+</form>
