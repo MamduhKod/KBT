@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resultat</title>
+<style>
+  </style>
+</head>
+<body>
+
+  {% for resultat in resultat %}
+  <div class="resultat-item">
+    <p>Resultat: {{ resultat.resultat }}</p>  
+    <p>Insikter: {{ resultat.insikter }}</p>
+    <p>Ny tro: {{ resultat.tro_post }}</p>
+    <p>Skillnad i tro : {{ experiment.tro_post_skillnad }}</p>

@@ -3,68 +3,24 @@
 <head>
 <title>Experiments</title>
 <style>
-  .experiment-item {
-    border: 1px solid #ddd; /* Adjust border style and color as needed */
-    margin-bottom: 10px; /* Add some spacing between experiments */
-}
-
-  .cool-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .cool-button:hover {
-    background-color: #45A049; /* Green on hover */
-  }
-  .experiment-details {
-    display: none;
-    /* Additional styles for details section */
-  }
-  
-  .experiment-item:hover .experiment-details {
-    display: block;
-    /* Additional styles for details section on hover */
-  }
-
-</style>
+  </style>
 </head>
 <body>
 
-
-
   {% for experiment in experiments %}
   <div class="experiment-item">
-    <p>Negativ Tanke: {{ experiment.negativ_tanke }}</p>  <p>Tro på tanke (1-10): {{ experiment.tro_pre }}</p>
+    <p>Negativ Tanke: {{ experiment.negativ_tanke }}</p> 
+    <p>Tro på tanke (1-10): {{ experiment.tro_pre }}</p>
     <p>Beteende: {{ experiment.Beteende }}</p>
     <p>Situation: {{ experiment.Situation }}</p>
     <p>Konsekvens: {{ experiment.Konsekvens }}</p>
-    </div>
-  </div>
+    
 {% empty %}
   <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>
-  {% endfor %}
-  {% for experiment in experiments %}
-  <div class="experiment-item">
-      <a href="{% url 'record_result' experiment.id %}">
-          <button class="record-button">Registrera Resultat</button>
-      </a>
-  </div>
 {% endfor %}
-
   <h2>Skapa nytt beteendeexperiment</h2>
   <a href="{% url 'Skapa' %}">
     <button class="cool-button">Skapa nytt experiment</button>
   </a>
-
 </body>
 </html>
-
