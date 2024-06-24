@@ -20,6 +20,9 @@ class ExperimentPlan(models.Model):
         help_text="Var kan du testa din tanke?")
     Konsekvens = models.CharField(max_length=100,
         help_text="Vad tror du kommer hända?")
+    
+
+    
 class ExperimentResultat(models.Model):
     Experiment = models.ForeignKey(ExperimentPlan, on_delete=models.CASCADE)
     resultat = models.CharField(max_length=300,help_text="Vad hände?")

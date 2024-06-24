@@ -1,3 +1,5 @@
+{% extends "experiments/base.html" %}
+{% block content %}
 <h1>Beteendeexperiment</h1>
 <h2>Vilken tanke vill du testa?</h2>
 <h3>Fyll i en negativ automatisk tanke som du vill testa. </h3>
@@ -8,3 +10,4 @@
   {{ form.as_p }}
   <button type="submit">Se ditt experiment</button>
 </form>
+{% endblock content %}

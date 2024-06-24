@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
+  {% extends "experiments/base.html" %}
+  {% block content %}
 <head>
 <title>Experiments</title>
 <style>
   </style>
 </head>
+<h2>Skapa nytt beteendeexperiment</h2>
+<a href="{% url 'Skapa' %}">
+  <button class="cool-button">Skapa nytt experiment</button>
+</a>
 <body>
-
+  <h3>Dina beteendeexperiment</h3>
   {% for experiment in experiments %}
+  <a href="{% url 'Detail' experiment.id %}">{{ experiment.negativ_tanke }}</a>
   <div class="experiment-item">
-    <p>Negativ Tanke: {{ experiment.negativ_tanke }}</p> 
-    <p>Tro på tanke (1-10): {{ experiment.tro_pre }}</p>
-    <p>Beteende: {{ experiment.Beteende }}</p>
-    <p>Situation: {{ experiment.Situation }}</p>
-    <p>Konsekvens: {{ experiment.Konsekvens }}</p>
+    <p> {{ experiment.datum }}</p> 
     
 {% empty %}
   <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>
 {% endfor %}
-  <h2>Skapa nytt beteendeexperiment</h2>
-  <a href="{% url 'Skapa' %}">
-    <button class="cool-button">Skapa nytt experiment</button>
-  </a>
+
 </body>
+{% endblock content %}
 </html>

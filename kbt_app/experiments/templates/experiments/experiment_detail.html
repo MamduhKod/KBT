@@ -1,0 +1,15 @@
+{% extends "experiments/base.html" %}
+{% block content %}
+
+<p>Experiment: {{ detail.id }}</p>
+
+<ul>
+    <li>
+    <p>Negativ Tanke: {{ detail.negativ_tanke }}</p> 
+    <p>Tro på tanke (1-10): {{ detail.tro_pre }}</p>
+    <p>Beteende: {{ detail.Beteende }}</p>
+    <p>Situation: {{detail.Situation }}</p>
+    <p>Konsekvens: {{ detail.Konsekvens|linebreaks }}</p>
+</ul>
+
+    {% endblock content %}
