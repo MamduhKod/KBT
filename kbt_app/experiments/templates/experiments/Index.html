@@ -17,6 +17,7 @@
   <a href="{% url 'Detail' experiment.id %}">{{ experiment.negativ_tanke }}</a>
   <div class="experiment-item">
     <p> {{ experiment.datum }}</p> 
+    <a href="{% url 'Registrera' experiment.pk %}">Record Result</a>
     
 {% empty %}
   <p>Skapa ett första beteendeexperiment genom att trycka på knappen "Skapa nytt experiment".</p>

@@ -1,4 +1,5 @@
 from .models import ExperimentPlan, ExperimentResultat
+from experiments.forms import RegistreraResultat
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect, get_object_or_404
@@ -27,19 +28,19 @@ class ExperimentPlanView(CreateView):
      context['form'] = self.get_form()
      return render(request, 'experiments/tanke_form.html', context)
 
+def Registrera(request, experiment_id):
+    experiment_plan = get_object_or_404(ExperimentPlan,pk=experiment_id)
+    if request.method == "POST":
+        form = RegistreraResultat(request.POST)
+    if form.is_valid():
+        
+        form.save()
+        return redirect('Index')
+    else:
+        form = RegistreraResultat(initial={"experiment": experiment_plan})
+    context = {"form": form, "experiment":experiment_plan}
+    return render(request,"experiments/record_results.html", context)
 
-class ExperimentResultatView(CreateView):
-    model = ExperimentResultat
-    fields = ["resultat","insikter","tro_post"]
-    success_url = reverse_lazy(('Resultat'))
+        
+        
     
-    def get(self, request, *args, **kwargs):
-     context = {} 
-     context['form'] = self.get_form()
-     return render(request, 'experiments/record_result.html', context)
-    
-    
-def Resultat(request,experiment_id ):
-    resultat = ExperimentResultat.objects.get(pk=experiment_id)  
-    context = {'resultat': resultat}  
-    return render(request, 'experiments/result.html', context)

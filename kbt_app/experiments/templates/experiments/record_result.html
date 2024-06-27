@@ -8,12 +8,10 @@
 <body>
 
     <h1>Beteendeexperiment resultat</h1>
-    <h2>Vilken tanke vill du testa?</h2>
-    <h3>Fyll lol vill testa. </h3>
-    <h4> Rangordna lolor på tanken från 1-10. (10 betyder att du tror fullständigt på tanken.)
-      Definiera därefter hur du skulle kunna testa om denna tanke stämmer, i ett experiment</h4>
+
+    <h4> Registrera ditt resultat nedan. Hur gick det?</h4>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Se ditt experiment</button>
+      <button type="submit">Registrera resultat</button>
     </form>
