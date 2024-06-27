@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  {% extends "experiments/base.html" %}
+  {% block content %}
 <title>Resultat</title>
 <style>
   </style>
 </head>
 <body>
 
-    <h1>Beteendeexperiment resultat</h1>
+    <h1>Beteendeexperiment</h1>
+    <h2> Resultat </h2>
 
     <h4> Registrera ditt resultat nedan. Hur gick det?</h4>
     <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
+      {{ formR}}
       <button type="submit">Registrera resultat</button>
     </form>
+    {% endblock content %}

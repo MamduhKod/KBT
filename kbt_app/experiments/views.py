@@ -30,17 +30,16 @@ class ExperimentPlanView(CreateView):
 
 def Registrera(request, experiment_id):
     experiment_plan = get_object_or_404(ExperimentPlan,pk=experiment_id)
-    if request.method == "POST":
-        form = RegistreraResultat(request.POST)
-    if form.is_valid():
-        
-        form.save()
-        return redirect('Index')
-    else:
-        form = RegistreraResultat(initial={"experiment": experiment_plan})
-    context = {"form": form, "experiment":experiment_plan}
-    return render(request,"experiments/record_results.html", context)
+    form = RegistreraResultat(initial={"Experiment": experiment_plan.pk})
+    context = {"formR": form, "experiment":experiment_plan}
+    return render(request,"experiments/record_result.html", context)
 
-        
+def Resultat(request, resultat_id):
+    resultat = get_object_or_404(ExperimentResultat, pk=resultat_id)
+    skillnad = resultat.objects.get(['tro_post_skillnad'])
+    context = ({'resultat':resultat, 'skillnad':skillnad})
+    return render(request, 'result.html', cont)
+    
+
         
     
