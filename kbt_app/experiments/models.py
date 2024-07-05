@@ -20,6 +20,7 @@ class ExperimentPlan(models.Model):
         help_text="Var kan du testa din tanke?")
     Konsekvens = models.CharField(max_length=100,
         help_text="Vad tror du kommer hända?")
+ 
     
 
     
