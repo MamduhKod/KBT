@@ -1,3 +1,4 @@
-{% for resultat in resultat %}
-<div class="resultat-item">
-  <p>Skillnad i tro: {{ skillnad }}</p> 
+<h1>Beteendeexperiment</h1>
+<h2> Resultat </h2>
+<h3><a href="{% url 'Detail' resultat.Experiment.pk %}">Experiment: {{ resultat.Experiment.negativ_tanke }}</a></h3>
+<p>Skillnad i tro: {{ resultat.skillnad }}</p>  <h3> Registrera ditt resultat nedan. Hur gick det? (This section can be removed)</h3>
