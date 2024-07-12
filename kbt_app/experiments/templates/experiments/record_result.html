@@ -9,13 +9,18 @@
 </head>
 <body>
 
-    <h1>Beteendeexperiment</h1>
-    <h2> Resultat </h2>
+  <h1>Beteendeexperiment</h1>
+  <h2> Resultat </h2>
 
+  {% if not message %}
     <h3> Registrera ditt resultat nedan. Hur gick det?</h3>
     <form method="post">
       {% csrf_token %}
-      {{ formR}}
-      <button type="submit">Registrera resultat</button>
+      {{ formR.as_p }}  <button type="submit">Registrera resultat</button>
     </form>
-    {% endblock content %}
+  {% else %}
+    <p>{{ message }}</p>  {% endif %}
+
+{% endblock content %}
+</body>
+</html>

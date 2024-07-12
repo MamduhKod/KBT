@@ -1,4 +1,11 @@
-<h1>Beteendeexperiment</h1>
-<h2> Resultat </h2>
-<h3><a href="{% url 'Detail' resultat.Experiment.pk %}">Experiment: {{ resultat.Experiment.negativ_tanke }}</a></h3>
-<p>Skillnad i tro: {{ resultat.skillnad }}</p>  <h3> Registrera ditt resultat nedan. Hur gick det? (This section can be removed)</h3>
+{% extends "experiments/base.html" %}
+{% block content %}
+<h3>Du har testat tanken: {{ experiment_plan }}</h3>
+
+<p>Skillnaden mellan din initiala tro på tanken och och din  nuvarande tro på den, efter experimentet är: {{ tro_skillnad }}</p>
+
+{% if belief_message %}
+  <p>{{ belief_message }}</p>
+{% endif %}
+{% endblock content %}
+

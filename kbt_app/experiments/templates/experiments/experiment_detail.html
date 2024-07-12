@@ -1,15 +1,14 @@
 {% extends "experiments/base.html" %}
 {% block content %}
 
-<p>Experiment: {{ detail.id }}</p>
+<b>Experiment:</b> {{ detail }}
 
 <ul>
-    <li>
-    <p>Negativ Tanke: {{ detail.negativ_tanke }}</p> 
-    <p>Tro på tanke (1-10): {{ detail.tro_pre }}</p>
-    <p>Beteende: {{ detail.Beteende }}</p>
-    <p>Situation: {{detail.Situation }}</p>
-    <p>Konsekvens: {{ detail.Konsekvens|linebreaks }}</p>
+    <li> <b>Negativ Tanke:</b> {{ detail.negativ_tanke|linebreaks }}</p> 
+    <li> <b>Tro på tanke (1-10):</b> {{ detail.tro_pre|linebreaks }}</p>
+    <li> <b>Beteende:</b> {{ detail.Beteende |linebreaks}}</p>
+    <li> <b>Situation:</b> {{detail.Situation |linebreaks}}</p>
+    <li> <b>Konsekvens:</b> {{ detail.Konsekvens|linebreaks }}</p>
 </ul>
 
     {% endblock content %}

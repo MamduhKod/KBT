@@ -1,0 +1,10 @@
+{% extends "experiments/base.html" %}
+{% block content %}
+<h1>Bekräfta borttagning</h1>
+<p>Är du säker på att du vill ta bort experimentet "{{ object.negativ_tanke }}"?</p>
+<form action="{% url 'delete' object.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Ta bort experiment</button>
+  <a href="{% url 'Index' %}">Avbryt</a>
+</form>
+{% endblock content %}

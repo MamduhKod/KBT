@@ -20,25 +20,15 @@ class ExperimentPlan(models.Model):
         help_text="Var kan du testa din tanke?")
     Konsekvens = models.CharField(max_length=100,
         help_text="Vad tror du kommer hända?")
- 
     
-
+    def __str__(self):
+        return self.negativ_tanke
     
 class ExperimentResultat(models.Model):
     Experiment = models.ForeignKey(ExperimentPlan, on_delete=models.CASCADE)
     resultat = models.CharField(max_length=300,help_text="Vad hände?")
     insikter = models.CharField( max_length=300, help_text="Vilka insikter kom du till?")
-    tro_post = models.SmallIntegerField(help_text="Hur starkt tror du på din ursprungliga tanke nu?")
+    tro_post = models.SmallIntegerField(blank=True, null=True,help_text="Hur starkt tror du på din ursprungliga tanke nu?")
     tro_pre_stored = models.SmallIntegerField(blank=True, null=True)
     tro_post_skillnad = models.SmallIntegerField(blank=True, null=True)
-    
-    @property
-    def tro_post_skillnad(self):
-       if self.tro_post and self.tro_pre_stored:
-           return self.tro_post - self.tro_pre_stored
-       else:
-           return None
-       
-    def __str__(self):
-        return self.results_text
-    
+
