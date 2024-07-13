@@ -4,6 +4,8 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy, reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import DeleteView
+from .forms import SignupForm
+from django.contrib.auth import get_user_model, UserCreationForm
 
 
 
@@ -86,5 +88,14 @@ class DeleteExperiment(DeleteView):
     # Optional: Add logic to restrict deletion based on conditions (e.g., user permissions)
 
 
-
+def signup_view(request):
+  if request.method == 'POST':
+    form = SignupForm(request.POST)
+    if form.is_valid():
+      form.save()  # Saves the new user to the database
+      # Redirect to a success page or login page
+      return redirect('login')  # Replace with your desired redirect URL
+  else:
+    form = SignupForm()
+  return render(request, 'signup.html', {'form': form})
     

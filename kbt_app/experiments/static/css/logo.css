@@ -1,0 +1,5 @@
+.logo {
+    float: right;  /* Position the logo to the right */
+    width: 100px;  /* Adjust width as needed */
+    height: auto;  /* Maintain aspect ratio */
+  }
